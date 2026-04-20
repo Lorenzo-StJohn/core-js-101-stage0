@@ -501,8 +501,63 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  let x = false;
+  let j = false;
+  for (let i = 0; i < 3; i += 1) {
+    if (
+      position[i][0] === 'X' &&
+      position[i][1] === 'X' &&
+      position[i][2] === 'X'
+    )
+      x = true;
+    if (
+      position[0][i] === 'X' &&
+      position[1][i] === 'X' &&
+      position[2][i] === 'X'
+    )
+      x = true;
+    if (
+      position[i][0] === '0' &&
+      position[i][1] === '0' &&
+      position[i][2] === '0'
+    )
+      j = true;
+    if (
+      position[0][i] === '0' &&
+      position[1][i] === '0' &&
+      position[2][i] === '0'
+    )
+      j = true;
+  }
+  if (
+    position[0][0] === 'X' &&
+    position[1][1] === 'X' &&
+    position[2][2] === 'X'
+  )
+    x = true;
+  if (
+    position[0][0] === '0' &&
+    position[1][1] === '0' &&
+    position[2][2] === '0'
+  )
+    j = true;
+  if (
+    position[0][2] === 'X' &&
+    position[1][1] === 'X' &&
+    position[2][0] === 'X'
+  )
+    x = true;
+  if (
+    position[0][2] === '0' &&
+    position[1][1] === '0' &&
+    position[2][0] === '0'
+  )
+    j = true;
+  if (x && j) return undefined;
+  if (x) return 'X';
+  if (j) return '0';
+  return undefined;
 }
 
 module.exports = {
